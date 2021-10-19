@@ -8,7 +8,7 @@
     2. Your data should come from a MySQL database;
     3. The endpoints should be tested;
     4. The endpoints should be documented;
-2.	Create an frontend to consume the data:
+2.	Create a frontend to consume the data:
     1.	Load and answer a question. Answer at least 2 different types of questions (Text, Multiple Choice, Slider, Dropdown, etc)
 
 #### Here are the main points that I’ll be evaluating your code
