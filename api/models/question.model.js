@@ -2,12 +2,12 @@ const { getConnection } = require('./utils/database');
 
 const Question = function (question) {
   this.id = question.id;
-  this.text = question.type;
+  this.type = question.type;
   this.text = question.text;
-  this.text = question.OptionA;
-  this.text = question.OptionB;
-  this.text = question.OptionC;
-  this.text = question.OptionD;
+  this.OptionA = question.OptionA;
+  this.OptionB = question.OptionB;
+  this.OptionC = question.OptionC;
+  this.OptionD = question.OptionD;
 }
 
 /** List all quesions
