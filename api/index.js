@@ -14,3 +14,5 @@ if (process.env.PORT) {
   app.listen(process.env.PORT);
   console.log('Express started on port ' + process.env.PORT);
 }
+
+module.exports = app;

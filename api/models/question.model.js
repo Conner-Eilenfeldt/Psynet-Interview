@@ -1,21 +1,21 @@
 const { getConnection } = require('./utils/database');
 
 const Question = function (question) {
+  this.id = question.id;
+  this.text = question.text;
 }
 
 /** List all quesions
- * @param
- * @returns 
+ * @returns { object } A JSON object that contains all of the questions.
  */
 Question.findAll = async () => {
-
   let conn;
   try {
     // establish a connection to MariaDB
     conn = await getConnection();
 
     // create a new query
-    var query = ``;
+    var query = "SELECT id, text FROM questions";
 
     // execute the query and set the result to a new variable
     var rows = await conn.query(query);
@@ -25,7 +25,6 @@ Question.findAll = async () => {
 
   } catch (err) {
     console.error(err);
-    if (conn) await conn.end();
     throw err;
   } finally {
     if (conn) await conn.end();
@@ -33,4 +32,3 @@ Question.findAll = async () => {
 }
 
 module.exports = Question;
-
