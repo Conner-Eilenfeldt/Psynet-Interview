@@ -23,10 +23,10 @@ Question.findAll = async () => {
     var query = "SELECT * FROM questions";
 
     // execute the query and set the result to a new variable
-    var rows = await conn.query(query);
+    var questions = await conn.query(query);
 
     // return the results
-    return rows;
+    return questions;
 
   } catch (err) {
     console.error(err);

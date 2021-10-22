@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Question } from '../models/question.model';
+import { QuestionGroup } from '../models/question-group.model';
 
-const BACKEND_URL = ''
+const BACKEND_URL = 'http://localhost:3000'
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class QuestionService {
 
   findAll() {
     return this.http
-      .get<Question[]>(BACKEND_URL + '/question');
+      .get<QuestionGroup>(BACKEND_URL + '/questions');
   }
 }

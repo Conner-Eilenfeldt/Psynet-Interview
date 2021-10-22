@@ -4,7 +4,7 @@
   "description": "List and answering questions",
   "main": "index.js",
   "scripts": {
-    "start": "node lambda.js",
+    "start": "node index.js",
     "test": "mocha tests.js"
   },
   "author": "",

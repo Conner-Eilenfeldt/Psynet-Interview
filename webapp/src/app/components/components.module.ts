@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { QuestionMultipleChoiceComponent } from './question/question-multiple-choice/question-multiple-choice.component';
 import { QuestionSliderComponent } from './question/question-slider/question-slider.component';
 import { QuestionTextComponent } from './question/question-text/question-text.component';
+import { QuestionGroupComponent } from './question/question-group/question-group.component';
 
 @NgModule({
   declarations: [
     QuestionMultipleChoiceComponent,
     QuestionSliderComponent,
-    QuestionTextComponent
+    QuestionTextComponent,
+    QuestionGroupComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +18,8 @@ import { QuestionTextComponent } from './question/question-text/question-text.co
   exports: [
     QuestionMultipleChoiceComponent,
     QuestionSliderComponent,
-    QuestionTextComponent
+    QuestionTextComponent,
+    QuestionGroupComponent
   ]
 })
 export class ComponentsModule { }
