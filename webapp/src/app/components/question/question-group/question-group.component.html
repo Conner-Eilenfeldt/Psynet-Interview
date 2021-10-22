@@ -1,0 +1,31 @@
+
+<!-- 
+    *** get for username
+    *** show questions
+        - loop through the question list and go to the corresponding component
+ -->
+
+ <!-- <p>Please enter username.</p>
+
+ <form action="input" id=username method="get">
+    <input name="name" type="text" value="Username" />
+    <button
+        (click)="getUsername($event)"> Save
+    </button>
+ </form> -->
+
+
+
+
+
+ <div *ngFor="let question of questions">
+    <div *ngIf="question.type == 'text'">
+        <app-question-text [question]="question" (answer)='getAnswer($event)'></app-question-text>  
+        <p></p>
+    </div>
+    
+    <div *ngIf="question.type == 'mult'">
+        <app-question-multiple-choice></app-question-multiple-choice>
+        <p></p>
+    </div>
+</div>
