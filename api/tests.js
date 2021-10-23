@@ -30,12 +30,12 @@ describe('/POST Answers', () => {
   it('it should result in array of DB insert results ', (done) => {
     let payload = {
       username: 'Billy',
-      answers: {
-        1: 'Blue',
-        2: 'Dog',
-        3: 'B',
-        4: 'C'
-      }
+      answers: [
+        {questionId:1, text: 'Blue'},
+        {questionId:2, text: 'Dog'},
+        {questionId:3, text: 'B'},
+        {questionId:4, text: 'C'}
+      ]
     };
 
     request(app)

@@ -44,26 +44,17 @@ module.exports.findAllQuestions = async (req, res) => {
 
 /** Answer all questions
  * @param { object } req.body - A JSON object with all a user's answers.
- *        in the format of {
- *                           totalQuestions: '<numberOfQuestions>',
- *                           username: '<username>',
- *                           answers: {
- *                                      <questionId>: '<text>',
- *                                      <questionId>: '<text>',
- *                                      ...
- *                           }
- *                          }
  * @returns { object[] } A JSON objects array of each DB insert result.
  */
  module.exports.answerQuestions = async (req, res) => {
   try {
     var result = [];
 
-    for (const key in req.body.answers) {
+    for (const key of req.body.answers) {
       let newUserAnswer = {
         username: req.body.username,
-        questionId: key,
-        text: req.body.answers[key]
+        questionId: key.questionId,
+        text: key.text
       }
 
       result[key-1] = await Answer.createUserAnswer(newUserAnswer);

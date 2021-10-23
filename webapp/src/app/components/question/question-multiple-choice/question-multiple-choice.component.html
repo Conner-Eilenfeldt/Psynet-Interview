@@ -1,1 +1,33 @@
-<p>question-multiple-choice works!</p>
+<!-- 
+    Show the question
+-->
+<p>{{index+1}}. {{question.text}}</p>
+
+<!-- 
+    Text area for user to type answer
+-->
+<form>
+    <input type="radio"
+        #OptionA
+        name="choice"
+        (click)="answerQuestion('A')"
+    > A)  {{question.optionA}}  <br>
+
+    <input type="radio"
+        #OptionB
+        name="choice"
+        (click)="answerQuestion('B')"
+    > B)  {{question.optionB}}  <br>
+
+    <input type="radio"
+        #OptionC
+        name="choice"
+        (click)="answerQuestion('C')"
+    > C)  {{question.optionC}}  <br>
+
+    <input type="radio"
+        #OptionD
+        name="choice"
+        (click)="answerQuestion('D')"
+    > D)  {{question.optionD}}  <br>
+</form>

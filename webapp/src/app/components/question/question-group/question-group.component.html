@@ -1,31 +1,31 @@
-
 <!-- 
-    *** get for username
-    *** show questions
-        - loop through the question list and go to the corresponding component
+    Get username
  -->
+ <div>
+    <p>Please enter username.</p>
+    <input #username
+       (blur)="getUsername(username.value)">
+       <br>
+ </div>
 
- <!-- <p>Please enter username.</p>
-
- <form action="input" id=username method="get">
-    <input name="name" type="text" value="Username" />
-    <button
-        (click)="getUsername($event)"> Save
-    </button>
- </form> -->
-
-
-
-
-
- <div *ngFor="let question of questions">
+ <!-- 
+     List questions
+  -->
+ <div *ngFor="let question of questions; let index = index">
     <div *ngIf="question.type == 'text'">
-        <app-question-text [question]="question" (answer)='getAnswer($event)'></app-question-text>  
-        <p></p>
+        <app-question-text [index]="index" [question]="question" (event)='getAnswer($event)'></app-question-text>  
     </div>
     
     <div *ngIf="question.type == 'mult'">
-        <app-question-multiple-choice></app-question-multiple-choice>
-        <p></p>
+        <app-question-multiple-choice [index]="index" [question]="question" (event)='getAnswer($event)'></app-question-multiple-choice>  
     </div>
+</div>
+
+<!-- 
+    Save answers to DB
+ -->
+<div>
+    <br>
+    <button (click)="saveAnswers()"
+        onClick="window.location.reload();">Submit Answers</button>
 </div>

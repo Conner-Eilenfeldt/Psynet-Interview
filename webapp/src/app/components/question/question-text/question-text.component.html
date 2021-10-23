@@ -1,25 +1,14 @@
 <!-- 
-    *** show question.text
+    Show the question
+-->
+<p>{{index+1}}. {{question.text}}</p>
 
-    *** have a place for user to type
-
-    *** save user answer into variable
-
- -->
-
- <p>question.text</p>
-
- <form>
-     <textarea cols="50" rows="5">Type answer here.</textarea><br /> 
- </form>
-
-
-<!--  
- <p>Please enter username.</p>
-
- <form action="input" id=username method="get">
-    <input textarea cols="50" rows="5">Type answer here.</textarea><br /> 
-    <button
-        (click)="getUsername(username)"> Save
-    </button>
- </form> -->
+<!-- 
+    Text area for user to type answer
+-->
+<form (change)="answerQuestion()">
+    <textarea #text
+        (change)="answer.questionId = question.id; answer.text = text.value"
+        cols="80" rows="4"
+        placeholder="Type your answer here"></textarea> 
+</form>

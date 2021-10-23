@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Answer } from '../../../models/answer.model';
 import { UserAnswer } from '../../../models/user-answer.model';
 import { Question } from '../../../models/question.model';
-import { QuestionGroup } from '../../../models/question-group.model';
 import { AnswerService } from '../../../services/answer.service';
 import { QuestionService } from '../../../services/question.service';
 
@@ -12,10 +11,10 @@ import { QuestionService } from '../../../services/question.service';
   styleUrls: ['./question-group.component.scss']
 })
 export class QuestionGroupComponent implements OnInit {
-  answers: Answer[] = [];
-  questions: QuestionGroup = { };
-  username: string = '';
+  questions: Question[] = [];
   newUserAnswer: UserAnswer = { };
+  answers: Answer[] = [];
+  username: string = '';
 
   constructor(
     private questionService: QuestionService,
@@ -29,22 +28,31 @@ export class QuestionGroupComponent implements OnInit {
   getQuestions() {
     this.questionService.findAll().subscribe(questions => {
       this.questions = questions;
-      console.log(this.questions)
     })
   }
-  
+
   getUsername(username: string) {
     this.username = username;
-    console.log(this.username)
   }
 
   getAnswer(answer: Answer) {
-    this.answers.push(answer);
+    let update = false;
+
+    for (let current of this.answers) {
+      if (answer.questionId == current.questionId) {
+        let index = this.answers.indexOf(current);
+        this.answers[index] = answer;
+        update = true;
+      }
+    }
+
+    if (!update)
+      this.answers.push(answer);
   }
 
   saveAnswers() {
     this.newUserAnswer.username = this.username;
     this.newUserAnswer.answers = this.answers;
-    this.answerService.createUserAnswer(this.newUserAnswer);
+    this.answerService.createUserAnswer(this.newUserAnswer).subscribe();
   }
 }

@@ -1,10 +1,6 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Answer } from '../../../models/answer.model';
-import { UserAnswer } from '../../../models/user-answer.model';
 import { Question } from '../../../models/question.model';
-import { QuestionGroup } from '../../../models/question-group.model';
-import { AnswerService } from '../../../services/answer.service';
-import { QuestionService } from '../../../services/question.service';
 
 @Component({
   selector: 'app-question-text',
@@ -12,8 +8,10 @@ import { QuestionService } from '../../../services/question.service';
   styleUrls: ['./question-text.component.scss']
 })
 export class QuestionTextComponent implements OnInit {
+  @Input() index: number = 0;
   @Input() question: Question = { };
-  @Output() answer: Answer = { };
+  @Output() event = new EventEmitter<Answer>();
+  answer: Answer = { };
 
   constructor(
 
@@ -23,8 +21,7 @@ export class QuestionTextComponent implements OnInit {
 
   }
 
-  getAnswer(id: number, text: string) {
-    this.answer.questionId = id;
-    this.answer.text = text;
+  answerQuestion() {
+    this.event.emit(this.answer);
   }
 }
